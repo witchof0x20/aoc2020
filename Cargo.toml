@@ -1,0 +1,8 @@
+[package]
+name = "aoc2020"
+version = "0.1.0"
+authors = ["Jade"]
+edition = "2018"
+
+[dependencies]
+color-eyre = "0.5"
