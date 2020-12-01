@@ -22,3 +22,5 @@ Optimizations:
 * Use binary search in the innermost loop: O(n^2 log n)
 * * This implies part 1 can be solved in O(n log n)
 * Keep track of when the sum becomes too large, as each outer loop increases the number, keeping track of where the sum exceeded 2020 provided an upper bound for future loops
+
+## Day 2

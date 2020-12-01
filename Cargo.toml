@@ -6,3 +6,4 @@ edition = "2018"
 
 [dependencies]
 color-eyre = "0.5"
+fnv = "1"

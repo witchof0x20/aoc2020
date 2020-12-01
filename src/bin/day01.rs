@@ -38,7 +38,11 @@ fn main() -> eyre::Result<()> {
             // do part 1 the fast way
             (false, true) => {
                 if let Ok(index) = input[..i].binary_search(&p1_target) {
-                    println!("Part 1: {}", n * input[index]);
+                    println!(
+                        "Part 1: {} found after {:?}",
+                        n * input[index],
+                        start_time.elapsed()
+                    );
                     // We can now kill the program because we already know part 2 is done, and we
                     // just solved part 2
                     break;
@@ -62,7 +66,11 @@ fn main() -> eyre::Result<()> {
                             {
                                 // This means the value was found
                                 Ok(index) => {
-                                    println!("Part 2: {}", n * n1 * input[index]);
+                                    println!(
+                                        "Part 2: {} found after {:?}",
+                                        n * n1 * input[index],
+                                        start_time.elapsed()
+                                    );
                                     part2_done = true;
                                 }
                                 // This means the value was not found, but we know the index of the
@@ -86,13 +94,17 @@ fn main() -> eyre::Result<()> {
                             // We also can't count duplicates, so make sure our second number isn't
                             // also at the zero index
                             if j != 0 && input[0] == 0 {
-                                part2_done = true;
                                 // The answer is zero because 0 is multiplied in there
-                                println!("Part 2: 0");
+                                println!("Part 2: 0 found after {:?}", start_time.elapsed());
+                                part2_done = true;
                             }
                             if !part1_done {
                                 // We know we found p1 so mark it complete
-                                println!("Part 1: {}", n * n1);
+                                println!(
+                                    "Part 1: {} found after {:?}",
+                                    n * n1,
+                                    start_time.elapsed()
+                                );
                                 part1_done = true;
                             }
                         }
@@ -108,9 +120,6 @@ fn main() -> eyre::Result<()> {
             }
         }
     }
-    // Stop the timer
-    let time_elapsed = start_time.elapsed();
-    println!("Solved in {:?}", time_elapsed);
 
     Ok(())
 }
