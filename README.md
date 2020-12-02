@@ -24,3 +24,9 @@ Optimizations:
 * Keep track of when the sum becomes too large, as each outer loop increases the number, keeping track of where the sum exceeded 2020 provided an upper bound for future loops
 
 ## Day 2
+Easy string parsing problem
+### Part 1
+Optimizations:
+* Stop counting if over the maximum value given
+### Part 2
+Nothing special, easier than part 1
