@@ -30,3 +30,11 @@ Optimizations:
 * Stop counting if over the maximum value given
 ### Part 2
 Nothing special, easier than part 1
+
+## Day 3
+Just an array indexing problem
+## Part 1
+Optimizations:
+* Use modulo indexing instead of generating the list many times (why would you do this)
+## Part 2
+Just part 1 with a for loop
