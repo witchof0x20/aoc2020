@@ -1,7 +1,7 @@
 use color_eyre::eyre::{self, WrapErr};
 use std::cmp::Ordering;
 use std::io::{self, BufRead};
-use std::time::{Duration, Instant};
+use std::time::{Instant};
 const TARGET: u64 = 2020;
 
 fn main() -> eyre::Result<()> {

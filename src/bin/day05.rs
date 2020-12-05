@@ -1,15 +1,13 @@
 use color_eyre::eyre::{self, WrapErr};
-use std::cmp::Ordering;
 use std::convert::TryInto;
 use std::io::{self, BufRead};
-use std::str::FromStr;
-use std::time::{Duration, Instant};
+use std::time::Instant;
 
 fn main() -> eyre::Result<()> {
     color_eyre::install()?;
     let stdin = io::stdin();
     // Start the timer
-    let start_time = Instant::now();
+    let _start_time = Instant::now();
     // Solve the problem
     let (min, max, mut map) =
         stdin

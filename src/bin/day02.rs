@@ -1,8 +1,8 @@
 use color_eyre::eyre::{self, WrapErr};
-use std::cmp::Ordering;
+
 use std::io::{self, BufRead};
 use std::str::FromStr;
-use std::time::{Duration, Instant};
+use std::time::{Instant};
 
 #[derive(Debug)]
 struct PolicyPassword {
