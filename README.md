@@ -38,3 +38,20 @@ Optimizations:
 * Use modulo indexing instead of generating the list many times (why would you do this)
 ## Part 2
 Just part 1 with a for loop
+
+## Day 4
+Just parsing.
+## Part 1
+I used a `scan` iterator and a horrendous `Option<Result<Option<T>, _>>` return type combined with a `filter_map` to iterate over the lines while allowing for less than 1 output per line. `scan`'s accumulator allowed me to build up passports and validate them. `Some(Ok(None))` means a line parsed and either no new passport was generated or one was, and it turned out to be missing fields. In general, `filter_map` worked nicely for this problem
+## Part 2
+Just another chain onto part 1.
+
+## Day 5
+Another iterator chain
+
+## Part 1
+Keep track of min and max for part 2. Easy stuff
+
+## Part 2
+I use a tightly packed bit array to store seat state. After padding the left and right seats to mark all remaining seats in a row occupied, all I have to do is check for a position where the row is not equal to 0xFF. I can use the `trailing_ones` function to find the position within that row, which probably compiles down to some processor intrinsic.
+
