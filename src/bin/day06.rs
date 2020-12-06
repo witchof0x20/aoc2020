@@ -4,7 +4,7 @@ use std::io::{self, BufRead};
 use std::time::Instant;
 
 fn main() -> eyre::Result<()> {
-    //color_eyre::install()?;
+    color_eyre::install()?;
     let stdin = io::stdin();
     // Start the timer
     let start_time = Instant::now();
