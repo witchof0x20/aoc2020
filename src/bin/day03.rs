@@ -2,7 +2,7 @@ use color_eyre::eyre::{self, WrapErr};
 
 use std::io::{self, BufRead};
 
-use std::time::{Instant};
+use std::time::Instant;
 
 fn main() -> eyre::Result<()> {
     color_eyre::install()?;

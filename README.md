@@ -55,3 +55,17 @@ Keep track of min and max for part 2. Easy stuff
 ### Part 2
 I use a tightly packed bit array to store seat state. After padding the left and right seats to mark all remaining seats in a row occupied, all I have to do is check for a position where the row is not equal to 0xFF. I can use the `trailing_ones` function to find the position within that row, which probably compiles down to some processor intrinsic.
 
+## Day 6
+Just set operations
+### Part 1
+* Union all the sets in a group
+* Take the resulting set's length
+* Add up all lengths
+
+Optimizations: 
+* Represent sets as bool arrays
+* Can probably store the scan state in a 64 bit integer, but state isn't getting copied a lot so probably not worth it
+### Part 2
+* Intersection of all sets in a group
+* Take resulting set's length
+* Add up all lengths
