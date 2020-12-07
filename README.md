@@ -68,4 +68,17 @@ Optimizations:
 ### Part 2
 * Intersection of all sets in a group
 * Take resulting set's length
-* Add up all lengths
+
+## Day 7
+DAG recursion
+### Part 1
+Look through the DAG recursively for membership
+
+Optimizations:
+* Stop checking as soon as a bag's sub-bag contains our target bag
+* NYI: Caching / memoization
+### Part 2
+Count subentries in the DAG recursively
+
+Optimizations:
+* NYI: Caching / memoization
