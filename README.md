@@ -76,9 +76,23 @@ Look through the DAG recursively for membership
 
 Optimizations:
 * Stop checking as soon as a bag's sub-bag contains our target bag
+* Use `HashMap<String, Vec<(String, usize)>>` as data structure for rules. Linear search is better for smaller sizes than going through a whole hash
 * NYI: Caching / memoization
 ### Part 2
 Count subentries in the DAG recursively
 
 Optimizations:
 * NYI: Caching / memoization
+
+## Day 8
+Assembly-like
+### Part 1
+Just run the code.
+
+Optimizations
+* Use a `Vec<bool>` to keep track of previously run lines, which should be the best data structure
+## Part 2
+Run the code, flipping each flippable operator. This one could be made much more complicated with control flow, but it turns out brute force is easy and works well.
+Optimizations:
+* Reuse code array, and mutate instructions in place, flipping them back when we've finished testing
+* Stop early if we find an answer, of course

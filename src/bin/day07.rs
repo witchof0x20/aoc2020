@@ -26,24 +26,21 @@ fn parse_bag_contents_item(s: &str) -> eyre::Result<Option<(String, usize)>> {
     }
 }
 
-fn part1(rules: &HashMap<String, Option<HashMap<String, usize>>>, goal_color: &str) -> usize {
+fn part1(rules: &HashMap<String, Vec<(String, usize)>>, goal_color: &str) -> usize {
     rules
         .keys()
         .map(|color| can_contain(rules, color, goal_color))
         .map(|x| if x { 1 } else { 0 })
         .sum()
 }
-fn can_contain(
-    rules: &HashMap<String, Option<HashMap<String, usize>>>,
-    color: &str,
-    other: &str,
-) -> bool {
-    if let Some(Some(contents)) = rules.get(color) {
-        if contents.contains_key(other) {
+fn can_contain(rules: &HashMap<String, Vec<(String, usize)>>, color: &str, other: &str) -> bool {
+    if let Some(contents) = rules.get(color) {
+        if contents.iter().find(|(c, _)| c == other).is_some() {
             true
         } else {
             contents
-                .keys()
+                .iter()
+                .map(|(c, _)| c)
                 .any(|color| can_contain(rules, color, other))
         }
     } else {
@@ -51,20 +48,23 @@ fn can_contain(
     }
 }
 
-fn part2(rules: &HashMap<String, Option<HashMap<String, usize>>>, goal_color: &str) -> usize {
+fn part2(rules: &HashMap<String, Vec<(String, usize)>>, goal_color: &str) -> usize {
     bag_count(rules, goal_color) - 1
 }
 
-fn bag_count(rules: &HashMap<String, Option<HashMap<String, usize>>>, goal_color: &str) -> usize {
+fn bag_count(rules: &HashMap<String, Vec<(String, usize)>>, goal_color: &str) -> usize {
     match rules.get(goal_color) {
-        Some(Some(contents)) => {
-            contents
-                .iter()
-                .map(|(color, count)| count * bag_count(rules, color))
-                .sum::<usize>()
-                + 1
+        Some(contents) => {
+            if contents.is_empty() {
+                1
+            } else {
+                contents
+                    .iter()
+                    .map(|(color, count)| count * bag_count(rules, color))
+                    .sum::<usize>()
+                    + 1
+            }
         }
-        Some(None) => 1,
         None => 0,
     }
 }
@@ -78,7 +78,7 @@ fn main() -> eyre::Result<()> {
     // Start the timer
     let start_time = Instant::now();
     // Create the map
-    let rules: HashMap<String, Option<HashMap<String, usize>>> = stdin
+    let rules: HashMap<String, Vec<(String, usize)>> = stdin
         .lock()
         .lines()
         .map(|line| {
@@ -94,10 +94,11 @@ fn main() -> eyre::Result<()> {
                 if parts.next().is_some() {
                     return Err(eyre::eyre!("Extra info at end"));
                 }
-                let inner_bags: Option<HashMap<String, usize>> = inner_bags
+                let inner_bags: Vec<(String, usize)> = inner_bags
                     .split(", ")
                     .map(parse_bag_contents_item)
-                    .collect::<Result<_, _>>()?;
+                    .collect::<Result<Option<_>, _>>()?
+                    .unwrap_or_else(Vec::new);
                 Ok((outer_bag, inner_bags))
             })
         })
