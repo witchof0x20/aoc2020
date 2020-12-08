@@ -3,6 +3,12 @@ name = "aoc2020"
 version = "0.8.0"
 authors = ["Jade"]
 edition = "2018"
+description = "Advent of Code 2020 problems"
+readme = "README.md"
+homepage = "https://github.com/witchof0x20/aoc2020"
+repository = "https://github.com/witchof0x20/aoc2020"
+license = "GPL-3.0-or-later"
+keywords = ["advent-of-code"]
 
 [dependencies]
 color-eyre = "0.5"
