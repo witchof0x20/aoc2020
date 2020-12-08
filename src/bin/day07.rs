@@ -35,7 +35,7 @@ fn part1(rules: &HashMap<String, Vec<(String, usize)>>, goal_color: &str) -> usi
 }
 fn can_contain(rules: &HashMap<String, Vec<(String, usize)>>, color: &str, other: &str) -> bool {
     if let Some(contents) = rules.get(color) {
-        if contents.iter().find(|(c, _)| c == other).is_some() {
+        if contents.iter().any(|(c, _)| c == other) {
             true
         } else {
             contents

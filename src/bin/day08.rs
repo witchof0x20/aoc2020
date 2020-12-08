@@ -1,5 +1,5 @@
 use color_eyre::eyre::{self, WrapErr};
-use std::convert::{TryFrom, TryInto};
+use std::convert::TryInto;
 use std::io::{self, BufRead};
 use std::str::FromStr;
 use std::time::Instant;
@@ -20,7 +20,7 @@ impl Instruction {
     /// `false` if the instruction was not flipped
     fn flip(&mut self) -> bool {
         match self {
-            Self::Acc(value) => false,
+            Self::Acc(_) => false,
             Self::Jmp(value) => {
                 *self = Self::Nop(*value);
                 true
@@ -160,7 +160,7 @@ fn main() -> eyre::Result<()> {
                 break;
             }
             // Flip the instruction back
-            machine.flip_instruction(i);
+            machine.flip_instruction(i)?;
         }
     }
     // Stop the timer
