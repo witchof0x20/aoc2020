@@ -11,5 +11,5 @@ license = "GPL-3.0-or-later"
 keywords = ["advent-of-code"]
 
 [dependencies]
-color-eyre = "0.5"
+color-eyre = "0.6"
 fnv = "1"
